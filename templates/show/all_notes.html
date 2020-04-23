@@ -6,13 +6,13 @@
 {% block onload %}"typewriter()"{% endblock onload %}
 {% block body %}
 
-<div class="container" >
+<div class="container">
 <center><h1 id="type" style="color: blue;font-family:cursive;margin-top: 1%;margin-bottom: 1%;font-size: 10%%;"></h1></center>
         {% for i in  1st %}
     <div class="card my-2 mx-auto" style="width: 18rem;">
         <div class="card-body">
-            <center><h1 class="card-title">{{i.subject}}</h1></center>
-            <center> <a href="{{i.subject}}" class="btn btn-primary">Click</a></center>
+            <center><h1 class="card-title">{{i.title}}</h1></center>
+            <center> <a href="#" class="btn btn-primary">Click</a></center>
         </div>
     </div>
     
@@ -27,7 +27,7 @@
 
 <script>
 var i = 0;
-        var text='Select Subject';
+        var text="Notes of {{sub}}";
         var speed = 80;
         function typewriter(){
             if (i < text.length){

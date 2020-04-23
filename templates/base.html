@@ -10,7 +10,7 @@
 
     <title>{% block title %}{% endblock title %}</title>
   </head>
-  <body>
+  <body onload={% block onload %}{% endblock onload %}>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">Notes</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,6 +34,9 @@
 </nav>
 {% block body %}
 {% endblock body %}
+
+{% block script %}
+{% endblock script %}
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
