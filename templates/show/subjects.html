@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}Home
+{% endblock title %}
+
+{% block onload %}"typewriter()"{% endblock onload %}
+{% block body %}
+
+<div class="container">
+
+<center><h1 id="type" style="color: blue;font-family:cursive;margin-top: 1%;margin-bottom: 1%;font-size: 10%%%;"></h1></center>
+        {% for i in  1st %}
+    <div class="card my-2 mx-auto" style="width: 18rem;">
+        <div class="card-body">
+            <center><h1 class="card-title">{{i.title}}</h1>
+            <h5>Subject = {{i.subject}}</h5>
+            <h5>Trade = {{i.trade}}</h5>
+            {% if i.any_message %}
+            <h5>{{i.any_message}}</h5>
+            {% endif %}
+            
+            <iframe src="/media/{{i.File}}" style="width: 0%;height: 0%;border: none;"></iframe>
+            </center>
+            <center> <a href="/" class="btn btn-primary">Home</a></center>
+        </div>
+    </div>
+    
+    
+    {% endfor %}
+</div>
+
+
+
+{% endblock body %}
+
+{% block script %}
+
+<script>
+var i = 0;
+
+    var text="Thanks for downloading...";
+
+        var speed = 80;
+        function typewriter(){
+            if (i < text.length){
+                document.getElementById("type").innerHTML += text[i];
+                i++;
+                setTimeout(typewriter,speed);
+            }
+        }
+</script>
+{% endblock script %}

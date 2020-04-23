@@ -7,15 +7,21 @@
 {% block body %}
 
 <div class="container">
-<center><h1 id="type" style="color: blue;font-family:cursive;margin-top: 1%;margin-bottom: 1%;font-size: 10%%;"></h1></center>
+<center><h1 id="type" style="color: blue;font-family:cursive;margin-top: 1%;margin-bottom: 1%;font-size: 10%%%;"></h1></center>
         {% for i in  1st %}
     <div class="card my-2 mx-auto" style="width: 18rem;">
         <div class="card-body">
-            <center><h1 class="card-title">{{i.title}}</h1></center>
-            <center> <a href="#" class="btn btn-primary">Click</a></center>
+            <center><h1 class="card-title">{{i.title}}</h1>
+            <h5>Subject = {{i.subject}}</h5>
+            <h5>Trade = {{i.trade}}</h5>
+            {% if i.any_message %}
+            <h5>{{i.any_message}}</h5>
+            {% endif %}
+            </center>
+            <center> <a href="{{i.id}}" class="btn btn-primary">Download</a></center>
         </div>
     </div>
-    
+    {{i.File}}
     {% endfor %}
 </div>
 

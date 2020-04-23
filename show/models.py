@@ -7,7 +7,7 @@ class First(models.Model):
     subject = models.CharField(max_length=100,default='')
     title = models.CharField(max_length=100,default='')
     any_message = models.CharField(max_length=500,default='',null=True,blank=True)
-    File = models.FileField(upload_to='media/first',default='',null=True,blank=True)
+    File = models.FileField(upload_to='media/first',default='')
     
 
     def __str__(self):
@@ -20,7 +20,7 @@ class Second(models.Model):
     subject = models.CharField(max_length=100,default='')
     title = models.CharField(max_length=100,default='')
     any_message = models.CharField(max_length=500,default='',null=True,blank=True)
-    File = models.FileField(upload_to='media/second',default='',null=True,blank=True)
+    File = models.FileField(upload_to='media/second',default='')
     
     def __str__(self):
         return self.trade
@@ -31,7 +31,7 @@ class Third(models.Model):
     subject = models.CharField(max_length=100,default='')
     title = models.CharField(max_length=100,default='')
     any_message = models.CharField(max_length=500,default='',null=True,blank=True)
-    File = models.FileField(upload_to='media/third',default='',null=True,blank=True)
+    File = models.FileField(upload_to='media/third',default='')
 
     def __str__(self):
         return self.trade
@@ -42,7 +42,7 @@ class Fourth(models.Model):
     subject = models.CharField(max_length=100,default='')
     title = models.CharField(max_length=100,default='')
     any_message = models.CharField(max_length=500,default='',null=True,blank=True)
-    File = models.FileField(upload_to='media/fourth',default='',null=True,blank=True)
+    File = models.FileField(upload_to='media/fourth',default='')
 
     def __str__(self):
         return self.trade
@@ -53,7 +53,7 @@ class Fifth(models.Model):
     subject = models.CharField(max_length=100,default='')
     title = models.CharField(max_length=100,default='')
     any_message = models.CharField(max_length=500,default='',null=True,blank=True)
-    File = models.FileField(upload_to='media/fifth',default='',null=True,blank=True)
+    File = models.FileField(upload_to='media/fifth',default='')
 
     def __str__(self):
         return self.trade
@@ -64,7 +64,7 @@ class Sixth(models.Model):
     subject = models.CharField(max_length=100,default='')
     title = models.CharField(max_length=100,default='')
     any_message = models.CharField(max_length=500,default='',null=True,blank=True)
-    File = models.FileField(upload_to='media/sixth',default='',null=True,blank=True)
+    File = models.FileField(upload_to='media/sixth',default='')
 
     def __str__(self):
         return self.trade
