@@ -10,3 +10,8 @@ def index(request):
     sixth = Sixth.objects.values('subject').distinct()
     param = {'1st':first,'2nd':second,'3rd':third,'4th':fourth,'5th':fifth,'6th':sixth}
     return render(request,'notes/index.html',param)
+
+def search(request):
+    s = request.GET.get('search')
+
+    print(s)
