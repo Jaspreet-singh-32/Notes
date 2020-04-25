@@ -1,7 +1,7 @@
 from django.shortcuts import render,HttpResponse
 from show.models import Data
 # Create your views here.
-def all_notes(request,slug):
+def all_notes(request):
     # first = First.objects.filter(subject=slug).values('title','any_message','id','trade','subject')
     # second = Second.objects.values('title','any_message','id','trade','subject')
     # third = Third.objects.values('title','any_message','id','trade','subject')
@@ -9,12 +9,12 @@ def all_notes(request,slug):
     # fifth = Fifth.objects.values('title','any_message','id','trade','subject')
     # sixth = Sixth.objects.values('title','any_message','id','trade','subject')
     # param = {'1st':first,'2nd':second,'3rd':third,'4th':fourth,'5th':fifth,'6th':sixth,'sub':slug}
+    sub = request.GET.get('all_notes')
+    data = Data.objects.filter(subject=sub).values('title','any_message','id','trade','subject','date','sem')
+    param = {'data':data, 'sub':sub}
+    return render(request, 'show/all_notes.html',param)
 
-    data = Data.objects.filter(subject=slug).values('title','any_message','id','trade','subject','date','sem')
-    param = {'data':data}
-    return render(request,'show/all_notes.html',param)
-
-def download(request,slug):
+def download(request ,slug):
     # first = First.objects.filter(id=slug)
     # second = Second.objects.filter(id=slug)
     # third = Third.objects.filter(id=slug)
@@ -27,11 +27,10 @@ def download(request,slug):
     return render(request,'show/download.html',param)
 
 def search_notes(request):
-    s = request.GET.get('search')
-    search = Data.objects.filter(title__istartswith=s)
+    # subject = request.GET.get()
+    title = request.GET.get('search')
+    search = Data.objects.filter(title__istartswith=title,).values('title','any_message','id','trade','subject','date','sem')
     param = {'data':search}
-    print(search)
-    print('hello')
-    # return render(request,'show/all_notes.html',param)
-    return HttpResponse('s')
-
+    # print(search)
+    # print('hello')
+    return render(request,'show/all_notes.html',param)

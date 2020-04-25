@@ -11,7 +11,7 @@
 <center><h1 id="type" style="color: blue;font-family:cursive;margin-top: 1%;margin-bottom: 1%;font-size: 10%%%;"></h1></center>
         {% for i in  data %}
     <div class="card my-2 mx-auto" style="width: 18rem;">
-        <div class="card-body">
+        <div class="card-body" style="color:black;font-family:cursive;">
             <center><h1 class="card-title">{{i.title}}</h1>
             <h5>Subject = {{i.subject}}</h5>
             <h5>Trade = {{i.trade}}</h5>
@@ -22,7 +22,7 @@
             uploaded on {{i.date}}
             <iframe src="/media/{{i.File}}" style="width: 0px;height: 0px;border: none;"></iframe>
             </center>
-            <center> <a href="/" class="btn btn-primary">Home</a></center>
+            <center><a href="/" class="btn btn-primary ">Home</a></center>
         </div>
     </div>
     

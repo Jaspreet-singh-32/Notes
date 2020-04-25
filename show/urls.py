@@ -4,7 +4,5 @@ from . import views
 urlpatterns = [
     path('', views.all_notes,name='home'),
     path('search_notes/', views.search_notes),
-    path('<str:slug>', views.download),
-
-
+    path('<str:slug>/', views.download),
 ]

@@ -10,9 +10,9 @@
 
     <title>{% block title %}{% endblock title %}</title>
   </head>
-  <body onload={% block onload %}{% endblock onload %}>
+  <body onload={% block onload %}{% endblock onload %} style="background-color:#f6d8ac">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">GetNotes</a>
+  <a class="navbar-brand" href="/">GetNotes</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -26,8 +26,8 @@
         
     
     </ul>
-    <form class="form-inline  my-2 my-lg-0" action="{% block search %}{% endblock search %}" method="GET">
-      <input class="form-control mr-sm-2" name="search" type="search" placeholder="{% block placeholder %}{% endblock placeholder %}" aria-label="Search">
+    <form class="form-inline  my-2 my-lg-0" action="/search_subject" method="GET">
+      <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search Subject" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0"  type="submit">Search</button>
     </form>
   </div>

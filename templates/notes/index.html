@@ -4,21 +4,22 @@
 {% endblock title %}
 
 {% block onload %}"typewriter()"{% endblock onload %}
-{% block search %}/search_subject{% endblock search %}
-{% block placeholder %}Subject Name
-{% endblock placeholder %}{% block body %}
+{% block body %}
 
 <div class="container" >
-<center><h1 id="type" style="color: blue;font-family:cursive;margin-top: 1%;margin-bottom: 1%;font-size: 10%%;"></h1></center>
+    
+    <center><h1 id="type" style="color: blue;font-family:cursive;margin-top: 1%;margin-bottom: 1%;font-size: 10%%;"></h1></center>
         {% for i in  data %}
+        <form action="/show" method="GET">
     <div class="card my-2 mx-auto" style="width: 18rem;">
         <div class="card-body">
-            <center><h1 class="card-title">{{i.subject}}</h1></center>
-            <center> <a href="/{{i.subject}}" class="btn btn-primary">Click</a></center>
+            <center><h1 class="card-title" style="color:black;font-family:cursive;">{{i.subject}}</h1></center>
+            <center> <button Name="all_notes" type="submit" value="{{i.subject}}" class="btn btn-primary">Click</button></center>
         </div>
     </div>
-        
+    </form>
     {% endfor %}
+        
 </div>
 
 
