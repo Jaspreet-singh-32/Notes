@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}Home
+{% endblock title %}
+
+{% block onload %}"typewriter()"{% endblock onload %}
+{% block body %}
+{% for message in messages %}
+<div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+  <strong>{{message}} !</strong> 
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endfor %}
+
+<div class="container" >
+    
+    <center><h1 id="type" style="color: blue;font-family:cursive;margin-top: 1%;margin-bottom: 1%;font-size: 10%%;"></h1></center>
+    {% if not data %}
+Your search - <b>{{search|truncatechars:20}}</b> - did not match any documents. <br>
+
+Suggestions:
+<ul>
+<li>Make sure that all words are spelled correctly.</li>
+<li>Try different keywords.</li>
+<li>Try more general keywords.</li>
+<li>Try fewer keywords.</li>
+</ul>
+{% endif %}
+        {% for i in  data %}
+        <form action="/show" method="GET">
+    <div class="card my-2 mx-auto" style="width: 18rem;">
+        <div class="card-body">
+            <center><h1 class="card-title" style="color:black;font-family:cursive;">{{i.subject}}</h1></center>
+            <center> <button Name="all_notes" type="submit" value="{{i.subject}}" class="btn btn-primary">Click</button></center>
+        </div>
+    </div>
+    </form>
+    {% endfor %}
+    
+        
+</div>
+
+
+<br>
+<br><br><br>
+{% endblock body %}
+
+{% block script %}
+
+<script>
+var i = 0;
+        var text='Select Results';
+        var speed = 80;
+        function typewriter(){
+            if (i < text.length){
+                document.getElementById("type").innerHTML += text[i];
+                i++;
+                setTimeout(typewriter,speed);
+            }
+        }
+</script>
+{% endblock script %}

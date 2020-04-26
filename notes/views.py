@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from show.models import Data
+from django.contrib import messages
 def index(request):
     # first = First.objects.values('subject').distinct()
     # second = Second.objects.values('subject').distinct()
@@ -15,9 +16,13 @@ def index(request):
 
 def search(request):
     s = request.GET.get('search')
-    search = Data.objects.filter(subject__istartswith=s).values('subject').distinct()
-    param = {'data':search}
-    return render(request,'notes/index.html',param)
 
-    
+    if len(s) > 50:
+        search = Data.objects.none()
+    else:
+        search = Data.objects.filter(subject__istartswith=s).values('subject').distinct()
+    if search.count() == 0:
+        messages.info(request, "Your search did not match any document")
+    param = {'data':search, 'search':s}
+    return render(request, 'notes/search.html', param )  
     
