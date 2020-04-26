@@ -15,4 +15,12 @@ class Data(models.Model):
         return self.trade+" - "+str(self.sem)+" - "+self.subject+" - "+self.title
     
 
+class Contact(models.Model):
+    id = models.AutoField
+    name = models.CharField(max_length=100)
+    email = models.CharField(max_length=100)
+    phone = models.IntegerField(max_length=15)
+    message = models.CharField(max_length=500)
 
+    def __str__(self):
+        return self.name+' - '+self.email

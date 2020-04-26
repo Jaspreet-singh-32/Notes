@@ -1,5 +1,7 @@
 from django.shortcuts import render,HttpResponse
 from show.models import Data
+from django.contrib import messages
+from show.models import Contact
 # Create your views here.
 def all_notes(request):
     # first = First.objects.filter(subject=slug).values('title','any_message','id','trade','subject')
@@ -34,3 +36,21 @@ def search_notes(request):
     # print(search)
     # print('hello')
     return render(request,'show/all_notes.html',param)
+
+
+def contact(request):
+    if request.method == 'POST':
+
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        ph = request.POST.get('ph')
+        msg = request.POST.get('msg')
+
+        if len(name)<3 or len(email)<3 or (len(ph) < 10 or len(ph) > 13) or len(msg)<3:
+            messages.warning(request,"Please fill all fields correctly")
+        else:
+            contact = Contact(name = name, email = email , phone = ph, message = msg)
+            contact.save()
+            messages.success(request,"Message received")
+
+    return render(request,'show/contact.html')

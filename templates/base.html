@@ -19,11 +19,15 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
+      <li class="nav-item {% block activehome %}{% endblock activehome %}">
         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         
+        <li class="nav-item {% block activecontact %}{% endblock activecontact %}">
+        <a class="nav-link" href="/show/contact">Contact us<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
     
     </ul>
     <form class="form-inline  my-2 my-lg-0" action="/search_subject" method="GET">
