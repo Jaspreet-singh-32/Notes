@@ -10,8 +10,8 @@
 
     <title>{% block title %}{% endblock title %}</title>
   </head>
-  <body onload={% block onload %}{% endblock onload %} style="background-color:#f6d8ac">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <body onload={% block onload %}{% endblock onload %} style="background-color:#f6d8ac;">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark {% block fixed %}    {% endblock fixed %}">
   <a class="navbar-brand" href="/">GetNotes</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>

@@ -11,8 +11,11 @@ def all_notes(request):
     # fifth = Fifth.objects.values('title','any_message','id','trade','subject')
     # sixth = Sixth.objects.values('title','any_message','id','trade','subject')
     # param = {'1st':first,'2nd':second,'3rd':third,'4th':fourth,'5th':fifth,'6th':sixth,'sub':slug}
-    sub = request.GET.get('all_notes')
-    data = Data.objects.filter(subject=sub).values('title','any_message','id','trade','subject','date','sem')
+    all = request.GET.get('sub')
+    l = all.split(' ')
+    sub , trade , sem  = l[0] , l[1] , l[2]
+    print(sub,trade,sem)
+    data = Data.objects.filter(subject=sub,trade=trade,sem=sem).values('title','any_message','id','trade','subject','date','sem')
     param = {'data':data, 'sub':sub}
     return render(request, 'show/all_notes.html',param)
 
@@ -54,3 +57,11 @@ def contact(request):
             messages.success(request,"Message received")
 
     return render(request,'show/contact.html')
+
+
+def select_dept(request):
+    sub = request.GET.get('all_notes')
+    dept = Data.objects.filter(subject=sub).values('sem','trade','subject').distinct()
+    param = {'data':dept}
+    return render(request,'show/dept_and_sem.html',param)
+    # return HttpResponse('depr and sem')
