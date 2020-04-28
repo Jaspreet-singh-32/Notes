@@ -12,33 +12,26 @@ def all_notes(request):
     # sixth = Sixth.objects.values('title','any_message','id','trade','subject')
     # param = {'1st':first,'2nd':second,'3rd':third,'4th':fourth,'5th':fifth,'6th':sixth,'sub':slug}
     all = request.GET.get('sub')
-    l = all.split(' ')
+    l = all.split(',')
     sub , trade , sem  = l[0] , l[1] , l[2]
-    print(sub,trade,sem)
+
     data = Data.objects.filter(subject=sub,trade=trade,sem=sem).values('title','any_message','id','trade','subject','date','sem')
     param = {'data':data, 'sub':sub}
     return render(request, 'show/all_notes.html',param)
 
 def download(request ,slug):
-    # first = First.objects.filter(id=slug)
-    # second = Second.objects.filter(id=slug)
-    # third = Third.objects.filter(id=slug)
-    # fourth = Fourth.objects.filter(id=slug)
-    # fifth = Fifth.objects.filter(id=slug)
-    # sixth = Sixth.objects.filter(id=slug)
-    # param = {'1st':first,'2nd':second,'3rd':third,'4th':fourth,'5th':fifth,'6th':sixth}
     data = Data.objects.filter(id=slug)
     param = {'data':data}
     return render(request,'show/download.html',param)
 
-def search_notes(request):
-    # subject = request.GET.get()
-    title = request.GET.get('search')
-    search = Data.objects.filter(title__istartswith=title,).values('title','any_message','id','trade','subject','date','sem')
-    param = {'data':search}
-    # print(search)
-    # print('hello')
-    return render(request,'show/all_notes.html',param)
+# def search_notes(request):
+#     # subject = request.GET.get()
+#     title = request.GET.get('search')
+#     search = Data.objects.filter(title__istartswith=title,).values('title','any_message','id','trade','subject','date','sem')
+#     param = {'data':search}
+#     # print(search)
+#     # print('hello')
+#     return render(request,'show/all_notes.html',param)
 
 
 def contact(request):
