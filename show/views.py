@@ -11,13 +11,16 @@ def all_notes(request):
     # fifth = Fifth.objects.values('title','any_message','id','trade','subject')
     # sixth = Sixth.objects.values('title','any_message','id','trade','subject')
     # param = {'1st':first,'2nd':second,'3rd':third,'4th':fourth,'5th':fifth,'6th':sixth,'sub':slug}
-    all = request.GET.get('sub')
-    l = all.split(',')
-    sub , trade , sem  = l[0] , l[1] , l[2]
+    if request.method == 'POST':
+        all = request.POST.get('sub')
+        l = all.split('->next->->')
+        sub , trade , sem  = l[0] , l[1] , l[2]
 
-    data = Data.objects.filter(subject=sub,trade=trade,sem=sem).values('title','any_message','id','trade','subject','date','sem')
-    param = {'data':data, 'sub':sub}
-    return render(request, 'show/all_notes.html',param)
+        data = Data.objects.filter(subject=sub,trade=trade,sem=sem)
+        param = {'data':data, 'sub':sub}
+        return render(request, 'show/all_notes.html',param)
+    else:
+        return HttpResponse('404 - page not found')
 
 def download(request ,slug):
     data = Data.objects.filter(id=slug)
