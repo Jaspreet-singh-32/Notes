@@ -1,10 +1,12 @@
 from django.shortcuts import render
-from show.models import Data
 from django.contrib import messages
+from show.models import Data
 
 def index(request):
 
     data = Data.objects.values('subject').distinct()
+    d = Data.objects.all()
+    print(d)
     param = {'data':data}
     return render(request,'notes/index.html',param)
 
