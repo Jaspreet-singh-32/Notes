@@ -37,23 +37,27 @@ def download(request ,slug):
 #     return render(request,'show/all_notes.html',param)
 
 
+# def contact(request):
+#     if request.method == 'POST':
+
+#         name = request.POST.get('name')
+#         email = request.POST.get('email')
+#         ph = request.POST.get('ph')
+#         msg = request.POST.get('msg')
+
+#         if len(name)<3 or len(email)<3 or (len(ph) < 10 or len(ph) > 13) or len(msg)<3:
+#             messages.warning(request,"Please fill all fields correctly")
+#         else:
+#             contact = Contact(name = name, email = email , phone = ph, message = msg)
+#             contact.save()
+#             messages.success(request,"Message received")
+
+#     return render(request,'show/contact.html')
+
 def contact(request):
-    if request.method == 'POST':
-
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        ph = request.POST.get('ph')
-        msg = request.POST.get('msg')
-
-        if len(name)<3 or len(email)<3 or (len(ph) < 10 or len(ph) > 13) or len(msg)<3:
-            messages.warning(request,"Please fill all fields correctly")
-        else:
-            contact = Contact(name = name, email = email , phone = ph, message = msg)
-            contact.save()
-            messages.success(request,"Message received")
-
-    return render(request,'show/contact.html')
-
+    if request.method == "POST":
+        print("perform contact")
+       return render(request,'show/contact.html')
 
 def select_dept(request):
     sub = request.GET.get('all_notes')
